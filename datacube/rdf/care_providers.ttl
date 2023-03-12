@@ -1,0 +1,52 @@
+@prefix ns: <https://bugulin.github.io/ndbi046/ontology#> .
+@prefix ns-code: <https://bugulin.github.io/ndbi046/code#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdmx-concept: <http://purl.org/linked-data/sdmx/2009/concept#> .
+@prefix sdmx-dimension: <http://purl.org/linked-data/sdmx/2009/dimension#> .
+@prefix sdmx-measure: <http://purl.org/linked-data/sdmx/2009/measure#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ns:county a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
+    rdfs:label "county"@en, "okres"@cs ;
+    rdfs:subPropertyOf sdmx-dimension:refArea ;
+    rdfs:range ns-code:County ;
+    qb:codeList ns-code:county ;
+    qb:concept sdmx-concept:refArea .
+
+ns:region a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
+    rdfs:label "region"@en, "kraj"@cs ;
+    rdfs:subPropertyOf sdmx-dimension:refArea ;
+    rdfs:range ns-code:Region ;
+    qb:codeList ns-code:region ;
+    qb:concept sdmx-concept:refArea .
+
+ns:fieldOfCare a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
+    rdfs:label "field of care"@en, "obor péče"@cs ;
+    rdfs:range ns-code:FieldOfCare ;
+    qb:codeList ns-code:fieldOfCare .
+
+ns:numberOfCareProviders a rdf:Property, qb:MeasureProperty ;
+    rdfs:label "number of care providers"@en, "počet poskytovatelů péče"@cs;
+    rdfs:subPropertyOf sdmx-measure:obsValue ;
+    rdfs:range xsd:nonNegativeInteger .
+
+ns:CareProvidersStructure a qb:DataStructureDefinition ;
+  qb:component [ qb:dimension ns:county ],
+    [ qb:dimension ns:region ],
+    [ qb:dimension ns:fieldOfCare ],
+    [ qb:measure ns:numberOfCareProviders ] .
+
+ns-code:fieldOfCare a skos:ConceptScheme ;
+    skos:prefLabel "Code list scheme for Field of care"@en ;
+    rdfs:label "Code list scheme for Field of care"@en ;
+    skos:note "This code list provides enumeration of fields of care in Care providers dataset."@en ;
+    rdfs:seeAlso ns-code:FieldOfCare .
+
+ns-code:FieldOfCare a rdfs:Class, owl:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Field of care - codelist class"@en ;
+    rdfs:seeAlso ns-code:fieldOfCare .
