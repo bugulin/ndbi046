@@ -15,3 +15,11 @@ PUBLISHER: Annotated[
 CARE_PROVIDERS_URL: Annotated[
     str, "URL of the Care Providers dataset."
 ] = "https://opendata.mzcr.cz/data/nrpzs/narodni-registr-poskytovatelu-zdravotnich-sluzeb.csv"
+
+COUNTIES_URL: Annotated[
+    str, "URL of a list of counties."
+] = "https://data.mpsv.cz/od/soubory/ciselniky/okresy.json"
+
+REGIONS_URL: Annotated[
+    str, "URL of a list of regions."
+] = "https://data.mpsv.cz/od/soubory/ciselniky/kraje.json"

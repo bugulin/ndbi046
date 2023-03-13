@@ -1,0 +1,24 @@
+@prefix ns: <https://bugulin.github.io/ndbi046/ontology#> .
+@prefix ns-code: <https://bugulin.github.io/ndbi046/code#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+ns-code:territorialUnit a skos:ConceptScheme ;
+    skos:prefLabel "Code list scheme for territorial units"@en,
+        "Schéma číselníku pro územní celky"@cs ;
+    rdfs:label "Code list scheme for territorial units"@en,
+        "Schéma číselníku pro územní celky"@cs ;
+    skos:note "This code list provides enumeration of regions and counties."@en,
+        "Tento číselník poskytuje výčet krajů a okresů."@cs ;
+    rdfs:seeAlso ns-code:Region, ns-code:County .
+
+ns-code:Region a rdfs:Class, owl:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Region - codelist class"@en, "Kraj - třída číselníku"@cs ;
+    rdfs:seeAlso ns-code:territorialUnit .
+
+ns-code:County a rdfs:Class, owl:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "County - codelist class"@en, "Okres - třída číselníku"@cs ;
+    rdfs:seeAlso ns-code:territorialUnit .
