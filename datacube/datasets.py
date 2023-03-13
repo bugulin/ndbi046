@@ -5,6 +5,7 @@ from datetime import date
 from rdflib import Graph, Literal, URIRef
 from rdflib.namespace import DCTERMS, QB, RDF, RDFS, SKOS, XSD
 
+from .codelists import CodeList, Indicator, TerritorialUnits
 from .config import PUBLISHER
 from .helpers import BASE_DIR, Resources
 from .namespace import CODE, ONTOLOGY, SDMX_SUBJECT
@@ -121,3 +122,101 @@ class CareProviders:
             self._add_field_of_care(graph, *foc)
         for obs in data.items():
             self._add_observation(graph, *obs)
+
+
+class Population:
+    """Population 2021 dataset."""
+
+    _observation_count = 0
+
+    dataset = Resources.get_dataset("population2021/")
+    title = {
+        "en": "Population 2021",
+        "cs": "Obyvatelé okresy 2021",
+    }
+    description = {
+        "en": "Population of counties in 2021.",
+        "cs": "Populace okresů v roce 2021.",
+    }
+
+    @dataclass(slots=True, frozen=True)
+    class Observation:
+        county: str
+        region: str
+        mean_population: int
+
+    def __init__(self, path: str):
+        self.src_path = path
+
+    def _add_dataset(self, graph: Graph):
+        issued = Literal(date.today().isoformat(), datatype=XSD.date)
+        license_res = URIRef(
+            "https://creativecommons.org/share-your-work/public-domain/pdm/"
+        )
+
+        graph.add((self.dataset, RDF.type, QB.DataSet))
+        for predicate in [RDFS.label, DCTERMS.title]:
+            for lang, title in self.title.items():
+                graph.add((self.dataset, predicate, Literal(title, lang=lang)))
+        for predicate in [RDFS.comment, DCTERMS.description]:
+            for lang, description in self.description.items():
+                graph.add((self.dataset, predicate, Literal(description, lang=lang)))
+        graph.add((self.dataset, QB.structure, ONTOLOGY.MeanPopulationStructure))
+        graph.add((self.dataset, DCTERMS.issued, issued))
+        graph.add((self.dataset, DCTERMS.publisher, URIRef(PUBLISHER)))
+        graph.add((self.dataset, DCTERMS.license, license_res))
+        # Population and migration
+        graph.add((self.dataset, DCTERMS.subject, SDMX_SUBJECT["1.1"]))
+        # Regional and small area statistics
+        graph.add((self.dataset, DCTERMS.subject, SDMX_SUBJECT["3.2"]))
+
+    def _add_observation(self, graph: Graph, observation: Observation):
+        resource = Resources.get_observation(self._observation_count, self.dataset)
+        graph.add((resource, RDF.type, QB.Observation))
+        graph.add((resource, QB.dataSet, self.dataset))
+        graph.add((resource, ONTOLOGY.region, Resources.get_region(observation.region)))
+        graph.add((resource, ONTOLOGY.county, Resources.get_county(observation.county)))
+        graph.add(
+            (
+                resource,
+                ONTOLOGY.meanPopulation,
+                Literal(observation.mean_population, datatype=XSD.integer),
+            )
+        )
+
+        self._observation_count += 1
+
+    def _parse_data(self):
+        tu = TerritorialUnits()
+
+        with open(self.src_path, newline="") as csv_file:
+            reader = csv.DictReader(csv_file)
+            for row in reader:
+                territory_type = int(row["vuzemi_cis"])
+                territory = row["vuzemi_kod"]
+                indicator = row["vuk"]
+                value = row["hodnota"]
+
+                if indicator != Indicator.MEAN_POPULATION:
+                    continue
+
+                if territory_type == CodeList.OKRES_NUTS:
+                    # Convert code
+                    territory = tu.convert_code(
+                        territory, (territory_type, CodeList.OKRES_LAU)
+                    )
+                    territory_type = CodeList.OKRES_LAU
+
+                if territory_type == CodeList.OKRES_LAU:
+                    yield Population.Observation(
+                        county=territory,
+                        region=tu.get_region_for(territory),
+                        mean_population=value,
+                    )
+
+    def add_to_graph(self, graph: Graph):
+        """Add this dataset to an RDF graph."""
+        graph.parse(BASE_DIR / "rdf/population.ttl")
+        self._add_dataset(graph)
+        for observation in self._parse_data():
+            self._add_observation(graph, observation)
