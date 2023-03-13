@@ -1,10 +1,6 @@
-from pathlib import Path
-
 from rdflib import URIRef
 
 from .namespace import CODE, RESOURCE
-
-BASE_DIR = Path(__file__).parent
 
 
 class Resources:

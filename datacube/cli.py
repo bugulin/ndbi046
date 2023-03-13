@@ -1,13 +1,13 @@
 import unittest
 
 import click
+from importlib_resources import as_file, files
 from rdflib import Graph
 from rdflib.namespace import DCTERMS
 
 from .codelists import TerritorialUnits
 from .config import CARE_PROVIDERS_URL, COUNTIES_URL, POPULATION_2021_URL, REGIONS_URL
 from .datasets import CareProviders, Population
-from .helpers import BASE_DIR
 from .loader import load
 from .namespace import RESOURCE, SDMX_SUBJECT
 from .tests.integrity_constraints import IntegrityConstraintsFactory
@@ -52,14 +52,16 @@ def generate(dataset, format):
 
 
 @main.command(help="Validate data cubes.")
-@click.argument("files", nargs=-1, type=click.Path(dir_okay=False))
+@click.argument("file", nargs=-1, type=click.Path(dir_okay=False))
 @click.option("-v", "--verbose", is_flag=True, help="Make unittest more talkative.")
 @click.pass_context
-def validate(ctx, verbose, files):
+def validate(ctx, verbose, file):
     factory = IntegrityConstraintsFactory()
-    for file in files:
-        factory.load_graph(file)
-    factory.load_file(BASE_DIR / "tests/integrity_constraints.sparql")
+    for f in file:
+        factory.load_graph(f)
+    ics = files("datacube.tests").joinpath("integrity_constraints.sparql")
+    with as_file(ics) as path:
+        factory.load_file(path)
     suite = factory.get_test_suite()
     result = unittest.TextTestRunner(verbosity=2 if verbose else 1).run(suite)
 

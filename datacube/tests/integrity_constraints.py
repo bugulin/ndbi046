@@ -5,9 +5,8 @@ from enum import Enum
 from typing import Type
 
 import rdflib
+from importlib_resources import files
 from rdflib.namespace import QB, RDF, SKOS
-
-from ..helpers import BASE_DIR
 
 
 class ParserPhase(int, Enum):
@@ -43,7 +42,8 @@ class IntegrityConstrains(unittest.TestCase):
 
     @classmethod
     def _normalize_graph(cls: Type):
-        with open(BASE_DIR / "tests/normalization.sparql") as fp:
+        normalization_script = files("datacube.tests").joinpath("normalization.sparql")
+        with normalization_script.open() as fp:
             buffer: list[str] = []
             for line in fp:
                 buffer.append(line)

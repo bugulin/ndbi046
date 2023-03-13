@@ -2,11 +2,12 @@ import csv
 import json
 from dataclasses import dataclass
 
+from importlib_resources import as_file, files
 from rdflib import Graph, Literal
 from rdflib.namespace import RDF, SKOS
 
 from .config import COUNTIES_URL, MAPPING_101_109, REGIONS_URL
-from .helpers import BASE_DIR, Resources
+from .helpers import Resources
 from .loader import load
 from .namespace import CODE
 
@@ -107,7 +108,9 @@ class TerritorialUnits:
 
     def add_to_graph(self, graph: Graph):
         """Add this code list to an RDF graph."""
-        graph.parse(BASE_DIR / "rdf/territorial_units.ttl")
+        defs = files("datacube.rdf").joinpath("territorial_units.ttl")
+        with as_file(defs) as path:
+            graph.parse(path)
         self.add_counties(graph)
         self.add_regions(graph)
 

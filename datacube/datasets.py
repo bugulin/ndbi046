@@ -2,12 +2,13 @@ import csv
 from dataclasses import dataclass
 from datetime import date
 
+from importlib_resources import as_file, files
 from rdflib import Graph, Literal, URIRef
 from rdflib.namespace import DCTERMS, QB, RDF, RDFS, SKOS, XSD
 
 from .codelists import CodeList, Indicator, TerritorialUnits
 from .config import PUBLISHER
-from .helpers import BASE_DIR, Resources
+from .helpers import Resources
 from .namespace import CODE, ONTOLOGY, SDMX_SUBJECT
 
 
@@ -116,7 +117,9 @@ class CareProviders:
                 data[key] = data.get(key, 0) + 1
 
         # Add data to the graph
-        graph.parse(BASE_DIR / "rdf/care_providers.ttl")
+        defs = files("datacube.rdf").joinpath("care_providers.ttl")
+        with as_file(defs) as path:
+            graph.parse(path)
         self._add_dataset(graph)
         for foc in self._fields_of_care.items():
             self._add_field_of_care(graph, *foc)
@@ -216,7 +219,9 @@ class Population:
 
     def add_to_graph(self, graph: Graph):
         """Add this dataset to an RDF graph."""
-        graph.parse(BASE_DIR / "rdf/population.ttl")
+        defs = files("datacube.rdf").joinpath("population.ttl")
+        with as_file(defs) as path:
+            graph.parse(path)
         self._add_dataset(graph)
         for observation in self._parse_data():
             self._add_observation(graph, observation)

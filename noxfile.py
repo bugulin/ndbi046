@@ -39,3 +39,4 @@ def mypy(session):
 def setup(session):
     """Test that the project can be installed and used."""
     session.install(".")
+    session.run("datacube", "generate", "care-providers", silent=True)

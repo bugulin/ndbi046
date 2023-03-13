@@ -1,0 +1,2 @@
+include datacube/rdf/*.ttl
+include datacube/tests/*.sparql

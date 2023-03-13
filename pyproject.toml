@@ -16,6 +16,7 @@ classifiers = [
 ]
 dependencies = [
     "click ~= 8.1",
+    "importlib-resources ~= 5.12",
     "rdflib ~= 6.2",
     "requests ~= 2.28",
 ]
