@@ -1,0 +1,33 @@
+@prefix ns: <https://bugulin.github.io/ndbi046/ontology#> .
+@prefix ns-code: <https://bugulin.github.io/ndbi046/code#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdmx-concept: <http://purl.org/linked-data/sdmx/2009/concept#> .
+@prefix sdmx-dimension: <http://purl.org/linked-data/sdmx/2009/dimension#> .
+@prefix sdmx-measure: <http://purl.org/linked-data/sdmx/2009/measure#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ns:county a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
+    rdfs:label "county"@en, "okres"@cs ;
+    rdfs:subPropertyOf sdmx-dimension:refArea ;
+    rdfs:range ns-code:County ;
+    qb:codeList ns-code:county ;
+    qb:concept sdmx-concept:refArea .
+
+ns:region a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
+    rdfs:label "region"@en, "kraj"@cs ;
+    rdfs:subPropertyOf sdmx-dimension:refArea ;
+    rdfs:range ns-code:Region ;
+    qb:codeList ns-code:region ;
+    qb:concept sdmx-concept:refArea .
+
+ns:meanPopulation a rdf:Property, qb:MeasureProperty ;
+    rdfs:label "mean population"@en, "střední stav obyvatel"@cs ;
+    rdfs:subPropertyOf sdmx-measure:obsValue ;
+    rdfs:range xsd:nonNegativeInteger .
+
+ns:MeanPopulationStructure a qb:DataStructureDefinition ;
+    qb:component [ qb:dimension ns:county ],
+        [ qb:dimension ns:region ],
+        [ qb:measure ns:meanPopulation ] .
