@@ -1,5 +1,5 @@
 import csv
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import date
 
 from importlib_resources import as_file, files
@@ -14,9 +14,6 @@ from .namespace import CODE, ONTOLOGY, SDMX_SUBJECT
 
 class CareProviders:
     """Care Providers dataset."""
-
-    _fields_of_care: dict[str, int] = {}
-    _observation_count: int = 0
 
     dataset = Resources.get_dataset("careproviders/")
     title = {
@@ -35,6 +32,15 @@ class CareProviders:
         county: str
         region: str
         field_of_care: int
+
+    @dataclass
+    class Properties:
+        """Internal dataset properties."""
+
+        fields_of_care: dict[str, int] = field(default_factory=dict)
+        observation_count: int = 0
+
+    _props = Properties()
 
     def __init__(self, path: str):
         self.src_path = path
@@ -62,7 +68,9 @@ class CareProviders:
         graph.add((self.dataset, DCTERMS.subject, SDMX_SUBJECT["3.2"]))
 
     def _add_observation(self, graph: Graph, dimensions: Dimensions, measure: int):
-        resource = Resources.get_observation(self._observation_count, self.dataset)
+        resource = Resources.get_observation(
+            self._props.observation_count, self.dataset
+        )
         graph.add((resource, RDF.type, QB.Observation))
         graph.add((resource, QB.dataSet, self.dataset))
         graph.add((resource, ONTOLOGY.region, Resources.get_region(dimensions.region)))
@@ -82,7 +90,7 @@ class CareProviders:
             )
         )
 
-        self._observation_count += 1
+        self._props.observation_count += 1
 
     def _add_field_of_care(self, graph: Graph, title: str, field_id: int):
         resource = Resources.get_field_of_care(field_id)
@@ -95,9 +103,9 @@ class CareProviders:
         graph.add((CODE.fieldOfCare, SKOS.hasTopConcept, resource))
 
     def _get_field_of_care_id(self, title: str) -> int:
-        if not (field := self._fields_of_care.get(title)):
-            field = len(self._fields_of_care)
-            self._fields_of_care[title] = field
+        if not (field := self._props.fields_of_care.get(title)):
+            field = len(self._props.fields_of_care)
+            self._props.fields_of_care[title] = field
 
         return field
 
@@ -121,7 +129,7 @@ class CareProviders:
         with as_file(defs) as path:
             graph.parse(path)
         self._add_dataset(graph)
-        for foc in self._fields_of_care.items():
+        for foc in self._props.fields_of_care.items():
             self._add_field_of_care(graph, *foc)
         for obs in data.items():
             self._add_observation(graph, *obs)
@@ -129,8 +137,6 @@ class CareProviders:
 
 class Population:
     """Population 2021 dataset."""
-
-    _observation_count = 0
 
     dataset = Resources.get_dataset("population2021/")
     title = {
@@ -141,6 +147,14 @@ class Population:
         "en": "Population of counties in 2021.",
         "cs": "Populace okresů v roce 2021.",
     }
+
+    @dataclass
+    class Properties:
+        """Internal dataset properties."""
+
+        observation_count: int = 0
+
+    _props = Properties()
 
     @dataclass(slots=True, frozen=True)
     class Observation:
@@ -174,7 +188,9 @@ class Population:
         graph.add((self.dataset, DCTERMS.subject, SDMX_SUBJECT["3.2"]))
 
     def _add_observation(self, graph: Graph, observation: Observation):
-        resource = Resources.get_observation(self._observation_count, self.dataset)
+        resource = Resources.get_observation(
+            self._props.observation_count, self.dataset
+        )
         graph.add((resource, RDF.type, QB.Observation))
         graph.add((resource, QB.dataSet, self.dataset))
         graph.add((resource, ONTOLOGY.region, Resources.get_region(observation.region)))
@@ -187,7 +203,7 @@ class Population:
             )
         )
 
-        self._observation_count += 1
+        self._props.observation_count += 1
 
     def _parse_data(self):
         tu = TerritorialUnits()
