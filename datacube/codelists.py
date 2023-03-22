@@ -7,8 +7,7 @@ from rdflib import Graph, Literal
 from rdflib.namespace import RDF, SKOS
 
 from .config import COUNTIES_URL, MAPPING_101_109, REGIONS_URL
-from .helpers import Resources
-from .loader import load
+from .helpers import Resources, save
 from .namespace import CODE
 
 
@@ -64,11 +63,11 @@ class TerritorialUnits:
             }
 
     def _load_default_data(self):
-        self.load_data(load(REGIONS_URL), load(COUNTIES_URL))
+        self.load_data(save(REGIONS_URL), save(COUNTIES_URL))
 
     def load_mapping_table(self, key: tuple[int, int], url: str) -> dict[str, str]:
         """Load code mapping table from a CSV file."""
-        path = load(url, "MAP{}-{}.csv".format(*key))
+        path = save(url, "MAP{}-{}.csv".format(*key))
         with open(path, newline="") as csv_file:
             reader = csv.DictReader(csv_file)
             table = {row["chodnota1"]: row["chodnota2"] for row in reader}
