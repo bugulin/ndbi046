@@ -27,5 +27,8 @@ dev = ["nox"]
 [project.scripts]
 datacube = "datacube:cli.main"
 
+[tool.setuptools]
+packages = ["datacube", "datacube.well_formed"]
+
 [tool.isort]
 profile = "black"
