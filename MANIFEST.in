@@ -1,2 +1,2 @@
 include datacube/rdf/*.ttl
-include datacube/tests/*.sparql
+include datacube/well_formed/*.sparql
