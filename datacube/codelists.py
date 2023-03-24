@@ -103,7 +103,7 @@ class TerritorialUnits:
             for lang, label in region.title.items():
                 graph.add((resource, SKOS.prefLabel, Literal(label, lang=lang)))
 
-            graph.add((CODE.region, SKOS.hasTopConcept, resource))
+            graph.add((CODE.territorialUnit, SKOS.hasTopConcept, resource))
 
     def add_to_graph(self, graph: Graph):
         """Add this code list to an RDF graph."""

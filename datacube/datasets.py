@@ -103,7 +103,8 @@ class CareProviders:
         graph.add((CODE.fieldOfCare, SKOS.hasTopConcept, resource))
 
     def _get_field_of_care_id(self, title: str) -> int:
-        if not (field := self._props.fields_of_care.get(title)):
+        field = self._props.fields_of_care.get(title)
+        if field is None:
             field = len(self._props.fields_of_care)
             self._props.fields_of_care[title] = field
 
@@ -122,6 +123,9 @@ class CareProviders:
                     region=row["KrajCode"],
                     field_of_care=self._get_field_of_care_id(row["OborPece"].lower()),
                 )
+                # Skip rows with missing values
+                if not key.county or not key.region:
+                    continue
                 data[key] = data.get(key, 0) + 1
 
         # Add data to the graph

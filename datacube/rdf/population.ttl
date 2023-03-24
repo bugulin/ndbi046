@@ -12,14 +12,14 @@ ns:county a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
     rdfs:label "county"@en, "okres"@cs ;
     rdfs:subPropertyOf sdmx-dimension:refArea ;
     rdfs:range ns-code:County ;
-    qb:codeList ns-code:county ;
+    qb:codeList ns-code:territorialUnit ;
     qb:concept sdmx-concept:refArea .
 
 ns:region a rdf:Property, qb:DimensionProperty, qb:CodedProperty ;
     rdfs:label "region"@en, "kraj"@cs ;
     rdfs:subPropertyOf sdmx-dimension:refArea ;
     rdfs:range ns-code:Region ;
-    qb:codeList ns-code:region ;
+    qb:codeList ns-code:territorialUnit ;
     qb:concept sdmx-concept:refArea .
 
 ns:meanPopulation a rdf:Property, qb:MeasureProperty ;
