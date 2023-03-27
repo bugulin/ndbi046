@@ -4,9 +4,12 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import Type
 
-import rdflib
 from importlib_resources import files
+from rdflib import Graph
 from rdflib.namespace import QB, RDF, SKOS
+
+from ..config import TEST_IC12_LIMIT
+from .normalization import normalize
 
 
 class ParserPhase(int, Enum):
@@ -28,7 +31,7 @@ class IntegrityConstrains(unittest.TestCase):
     :see: https://www.w3.org/TR/vocab-data-cube/#wf-rules
     """
 
-    graph = rdflib.Graph()  # Shared between all test runs (for better performance)
+    graph = Graph()  # Shared between all test runs (for better performance)
     namespace = {
         "rdf": RDF,
         "skos": SKOS,
@@ -38,18 +41,7 @@ class IntegrityConstrains(unittest.TestCase):
     @classmethod
     def add_graph(cls: Type, path: str):
         cls.graph.parse(path)
-        cls._normalize_graph()
-
-    @classmethod
-    def _normalize_graph(cls: Type):
-        normalization_script = files("datacube.tests").joinpath("normalization.sparql")
-        with normalization_script.open() as fp:
-            buffer: list[str] = []
-            for line in fp:
-                buffer.append(line)
-                if line.strip() == "};":
-                    cls.graph.update("".join(buffer), initNs=cls.namespace)
-                    buffer.clear()
+        normalize(cls.graph)
 
     def test_ic20(self):
         """
@@ -132,12 +124,14 @@ class IntegrityConstraintsFactory:
 
     def __init__(self, template: Type = IntegrityConstrains):
         self.cls = template
+        self._load_tests()
 
-    def load_file(self, path: str):
+    def _load_tests(self):
         """Load file with tests."""
+        ics = files().joinpath("integrity_constraints.sparql")
         state = ParserState()
-        with open(path) as f:
-            for line in f:
+        with ics.open() as fp:
+            for line in fp:
                 self._parse_line(line.rstrip(), state)
             self._parse_line("# EOF-0.", state)  # termination token
 
@@ -157,6 +151,24 @@ class IntegrityConstraintsFactory:
             for query in queries:
                 ret = testcase_self.graph.query(query, initNs=testcase_self.namespace)
                 testcase_self.assertFalse(ret.askAnswer)
+
+        if name == "test_ic12":
+            _test = test
+
+            def test(testcase_self):
+                r = testcase_self.graph.query(
+                    """
+                    SELECT (COUNT(?obs) as ?size) WHERE {
+                        ?obs qb:dataSet ?dataset .
+                    } GROUP BY ?dataset
+                    """,
+                    initNs=testcase_self.namespace,
+                )
+                if True in [int(row.get("size")) > TEST_IC12_LIMIT for row in r]:
+                    # This test will most likely run out of memory, so we will rather skip it
+                    testcase_self.skipTest("test too expensive")
+                else:
+                    _test(testcase_self)
 
         test.__doc__ = docstring
 

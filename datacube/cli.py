@@ -1,16 +1,15 @@
 import unittest
 
 import click
-from importlib_resources import as_file, files
 from rdflib import Graph
 from rdflib.namespace import DCTERMS
 
 from .codelists import TerritorialUnits
 from .config import CARE_PROVIDERS_URL, COUNTIES_URL, POPULATION_2021_URL, REGIONS_URL
 from .datasets import CareProviders, Population
-from .loader import load
+from .helpers import save
 from .namespace import RESOURCE, SDMX_SUBJECT
-from .tests.integrity_constraints import IntegrityConstraintsFactory
+from .well_formed import IntegrityConstraintsFactory
 
 
 @click.group()
@@ -36,14 +35,14 @@ def generate(dataset, format):
 
     for ds in dataset:
         if ds == "care-providers":
-            cp = CareProviders(load(CARE_PROVIDERS_URL))
+            cp = CareProviders(save(CARE_PROVIDERS_URL))
             cp.add_to_graph(g)
         elif ds == "population-2021":
-            p = Population(load(POPULATION_2021_URL))
+            p = Population(save(POPULATION_2021_URL))
             p.add_to_graph(g)
         elif ds == "regions+counties":
             tu = TerritorialUnits()
-            tu.load_data(load(REGIONS_URL), load(COUNTIES_URL))
+            tu.load_data(save(REGIONS_URL), save(COUNTIES_URL))
             tu.add_to_graph(g)
         else:
             click.echo(f"[!] unknown dataset '{ds}'", err=True)
@@ -59,9 +58,6 @@ def validate(ctx, verbose, file):
     factory = IntegrityConstraintsFactory()
     for f in file:
         factory.load_graph(f)
-    ics = files("datacube.tests").joinpath("integrity_constraints.sparql")
-    with as_file(ics) as path:
-        factory.load_file(path)
     suite = factory.get_test_suite()
     result = unittest.TextTestRunner(verbosity=2 if verbose else 1).run(suite)
 

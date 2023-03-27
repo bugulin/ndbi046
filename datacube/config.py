@@ -11,6 +11,12 @@ PUBLISHER: Annotated[
     str, "Publisher of the generated data cubes."
 ] = "https://bugulin.github.io/"
 
+TEST_IC12_LIMIT: Annotated[
+    int,
+    "Skip integrity constraint test no. 12 if any dataset has more than that many observations,"
+    " because this test is very expensive and most likely will not finish.",
+] = 2000
+
 
 CARE_PROVIDERS_URL: Annotated[
     str, "URL of the Care Providers dataset."
