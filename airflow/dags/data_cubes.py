@@ -24,10 +24,12 @@ HEALTH_CARE_FILENAME = "health_care.ttl"
 POPULATION_FILENAME = "population.ttl"
 
 care_providers_dataset = Dataset(
-    CARE_PROVIDERS_URL, extra={"filename": "care-providers.csv"}
+    CARE_PROVIDERS_URL,
+    extra={"filename": "care-providers.csv", "force_download": True},
 )
 population_dataset = Dataset(
-    POPULATION_2021_URL, extra={"filename": "population-2021.csv"}
+    POPULATION_2021_URL,
+    extra={"filename": "population-2021.csv", "force_download": True},
 )
 regions_dataset = Dataset(REGIONS_URL)
 counties_dataset = Dataset(COUNTIES_URL)
@@ -65,7 +67,8 @@ def data_cubes():
         given URL.
         """
         filename = src.extra.get("filename") if src.extra else None
-        path = save(src.uri, filename).absolute()
+        force_download = src.extra.get("force_download", False) if src.extra else False
+        path = save(src.uri, filename, force_download).absolute()
         return str(path)
 
     @task()
