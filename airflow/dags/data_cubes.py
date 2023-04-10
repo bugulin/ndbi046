@@ -3,9 +3,11 @@ from unittest import TextTestRunner
 
 from airflow.datasets import Dataset
 from airflow.decorators import dag, task
+from airflow.exceptions import AirflowSkipException
 from airflow.models.param import Param
-from pendulum import datetime
-from rdflib import Graph
+from pendulum import datetime, now
+from rdflib import Graph, Literal, URIRef
+from rdflib.namespace import PROV, RDF, XSD
 
 from datacube import CareProviders, Population, TerritorialUnits
 from datacube.config import (
@@ -22,6 +24,7 @@ from datacube.well_formed import IntegrityConstraintsFactory
 CODELIST_FILENAME = "codelist.ttl"
 HEALTH_CARE_FILENAME = "health_care.ttl"
 POPULATION_FILENAME = "population.ttl"
+PROVENANCE_FILENAME = "provenance.trig"  # Make sure the file extension matches the format passed to rdflib.Graph.serialize
 
 care_providers_dataset = Dataset(
     CARE_PROVIDERS_URL,
@@ -43,8 +46,15 @@ counties_dataset = Dataset(COUNTIES_URL)
     tags=["NDBI046"],
     params={
         "output_path": Param(
-            str(Path.cwd()), type="string", format="iri", title="Output path"
-        )
+            str(Path.cwd()),
+            type="string",
+            title="Output path",
+        ),
+        "provenance": Param(
+            None,
+            type=["string", "null"],
+            title="Input provenance path",
+        ),
     },
 )
 def data_cubes():
@@ -57,6 +67,7 @@ def data_cubes():
     Parameter | Description
     ---|---
     `output_path`&emsp; | Path where to save output files to. Defaults to current working directory. The directory must exist, otherwise tasks will fail.
+    `provenance` | Path to provenance file. This file will be enriched by dataset generation timestamps and output files locations. When set to `null` (default), no provenance file will be generated.
     """
 
     @task()
@@ -89,35 +100,45 @@ def data_cubes():
         graph.serialize(output_path)
         return str(output_path)
 
-    @task()
-    def make_health_care(src_path: str, codelist_path: str, **context) -> str:
+    @task(multiple_outputs=True)
+    def make_health_care(
+        src_path: str, codelist_path: str, **context
+    ) -> dict[str, str]:
         """
         #### Health care task
         A task to create Care Providers data cube.
         """
         graph = Graph(base=RESOURCE)
-        cp = CareProviders(src_path)
-        cp.add_to_graph(graph)
+        ds = CareProviders(src_path)
+        ds.add_to_graph(graph)
         graph.parse(codelist_path)
 
         output_path = Path(context["params"]["output_path"]) / HEALTH_CARE_FILENAME
         graph.serialize(output_path, format="turtle")
-        return str(output_path)
+        return {
+            "datacube": ds.dataset,
+            "file": output_path.absolute().as_uri(),
+            "timestamp": str(now()),
+        }
 
-    @task()
-    def make_population(src_path: str, codelist_path: str, **context) -> str:
+    @task(multiple_outputs=True)
+    def make_population(src_path: str, codelist_path: str, **context) -> dict[str, str]:
         """
         #### Population task
         A task to create Population data cube.
         """
         graph = Graph(base=RESOURCE)
-        cp = Population(src_path)
-        cp.add_to_graph(graph)
+        ds = Population(src_path)
+        ds.add_to_graph(graph)
         graph.parse(codelist_path)
 
         output_path = Path(context["params"]["output_path"]) / POPULATION_FILENAME
         graph.serialize(output_path, format="turtle")
-        return str(output_path)
+        return {
+            "datacube": ds.dataset,
+            "file": output_path.absolute().as_uri(),
+            "timestamp": str(now()),
+        }
 
     @task()
     def validate(path: str):
@@ -132,6 +153,29 @@ def data_cubes():
 
         assert result.wasSuccessful(), "The produced data cube is not well-formed."
 
+    @task()
+    def create_provenance(*datasets: dict, **context):
+        """
+        #### Provenance task
+        A task to create provenance document using PROV-O.
+        """
+        graph = Graph()
+        provenance = context["params"].get("provenance")
+        if provenance is None:
+            raise AirflowSkipException("no provenance")
+        graph.parse(provenance)
+
+        for ds in datasets:
+            cube_res = URIRef(ds["datacube"])
+            file_res = URIRef(ds["file"])
+            timestamp = Literal(ds["timestamp"], datatype=XSD.dateTime)
+            graph.add((cube_res, PROV.atLocation, file_res))
+            graph.add((cube_res, PROV.generatedAtTime, timestamp))
+            graph.add((file_res, RDF.type, PROV.Location))
+
+        output_path = Path(context["params"]["output_path"]) / PROVENANCE_FILENAME
+        graph.serialize(output_path, format="trig")
+
     data_cp = retrieve(care_providers_dataset)
     data_p = retrieve(population_dataset)
     data_tu1 = retrieve(regions_dataset)
@@ -142,8 +186,9 @@ def data_cubes():
     output1 = make_health_care(data_cp, codelist)
     output2 = make_population(data_p, codelist)
 
-    validate(output1)
-    validate(output2)
+    validate(output1["file"])
+    validate(output2["file"])
+    create_provenance(output1, output2)
 
 
 data_cubes()
