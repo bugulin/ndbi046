@@ -1,0 +1,106 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns: <https://bugulin.github.io/ndbi046/prov#> .
+@prefix ns-code: <https://bugulin.github.io/ndbi046/code#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+#region Agents
+<https://github.com/bugulin/ndbi046> a prov:Agent, prov:SoftwareAgent ;
+    prov:actedOnBehalf <https://skodapetr.github.io/me> .
+
+<https://skodapetr.github.io/me> a prov:Agent, prov:Person ;
+    foaf:givenName "Petr" ;
+    foaf:familyName "Škoda" ;
+    prov:actedOnBehalf <https://www.mff.cuni.cz> .
+
+<https://www.mff.cuni.cz> a prov:Agent, prov:Organization ;
+    foaf:name "Univerzita Karlova, Matematicko-fyzikální fakulta"@cs,
+        "Charles University, Faculty of Mathematics and Physics"@en .
+
+<https://www.czso.cz/> a prov:Agent, prov:Organization ;
+    foaf:name "Český statistický úřad"@cs .
+
+<https://www.mpsv.cz/> a prov:Agent, prov:Organization ;
+    foaf:name "Ministerstvo práce a sociálních věcí České republiky"@cs .
+
+<https://www.mzcr.cz/> a prov:Agent, prov:Organization ;
+    foaf:name "Ministerstvo zdravotnictví České republiky"@cs .
+#endregion
+
+#region Activities
+ns:healthCareActivity a prov:Activity ;
+    prov:used ns-code:territorialUnit,
+        <https://opendata.mzcr.cz/data/nrpzs/narodni-registr-poskytovatelu-zdravotnich-sluzeb.csv> ;
+    prov:wasAssociatedWith <https://github.com/bugulin/ndbi046> .
+
+ns:populationActivity a prov:Activity ;
+    prov:used ns-code:territorialUnit,
+        <https://www.czso.cz/documents/10180/184344914/130141-22data2021.csv> ;
+    prov:wasAssociatedWith <https://github.com/bugulin/ndbi046> .
+#endregion
+
+#region Entities
+<https://opendata.mzcr.cz/data/nrpzs/narodni-registr-poskytovatelu-zdravotnich-sluzeb.csv> a prov:Entity ;
+    rdfs:label "Národní registr poskytovatelů zdravotních služeb"@cs ;
+    rdfs:comment "NRPZS poskytuje kompletní přehled o všech poskytovatelích zdravotních služeb v České republice, bez ohledu na jejich zřizovatele. Poskytuje údaje o profilu a rozsahu péče poskytované jednotlivými zdravotnickými zařízeními, obsahuje kontaktní údaje na daná zdravotnická zařízení a další podrobnější informace. Správcem a provozovatelem registru je Ústav zdravotnických informací a statistiky ČR (ÚZIS)."@cs ;
+    prov:wasAttributedTo <https://www.mzcr.cz/> .
+
+<https://www.czso.cz/documents/10180/184344914/130141-22data2021.csv> a prov:Entity ;
+    rdfs:label "Pohyb obyvatel za ČR, kraje, okresy, SO ORP a obce - rok 2021"@cs ;
+    rdfs:comment "Datová sada obsahuje statistické údaje o přirozeném i mechanickém pohybu obyvatel, tedy o počtu živě narozených, zemřelých, přistěhovalých a vystěhovalých za obce, správní obvody obcí s rozšířenou působností (SO ORP), okresy, kraje i republiku. Doplněny jsou údaje o přirozeném přírůstku obyvatel, přírůstku stěhováním, celkovém přírůstku, a také o středním stavu obyvatel."@cs ;
+    prov:wasAttributedTo <https://www.czso.cz/> .
+
+<https://data.mpsv.cz/od/soubory/ciselniky/kraje.json> a prov:Entity ;
+    rdfs:label "Kraje"@cs, "Regions"@en ;
+    rdfs:comment "číselník krajů"@cs, "code list of regions"@en ;
+    prov:wasAttributedTo <https://www.mpsv.cz/> .
+
+<https://data.mpsv.cz/od/soubory/ciselniky/okresy.json> a prov:Entity ;
+    rdfs:label "Okresy"@cs, "Districts"@en ;
+    rdfs:comment "číselník okresů ČR"@cs, "districts code list"@en ;
+    prov:wasAttributedTo <https://www.mpsv.cz/> .
+
+<https://apl.czso.cz/iSMS/do_cis_export?kodcis=101&typdat=1&cisvaz=109_886&cisjaz=203&format=2&separator=%2C> a prov:Entity ;
+    rdfs:label "Vazba mezi číselníky ČSÚ: OKRES_NUTS (kód 101) - OKRES_LAU (kód 109)"@cs ;
+    prov:wasAttributedTo <https://www.czso.cz/> .
+
+ns-code:territorialUnit a prov:Entity ;
+    prov:wasDerivedFrom <https://data.mpsv.cz/od/soubory/ciselniky/okresy.json>,
+        <https://data.mpsv.cz/od/soubory/ciselniky/kraje.json>,
+        <https://apl.czso.cz/iSMS/do_cis_export?kodcis=101&typdat=1&cisvaz=109_886&cisjaz=203&format=2&separator=%2C> ;
+    prov:qualifiedDerivation [
+        a prov:Derivation ;
+        prov:entity <https://data.mpsv.cz/od/soubory/ciselniky/kraje.json> ;
+        prov:hadRole ns:codeList ;
+    ] ;
+    prov:qualifiedDerivation [
+        a prov:Derivation ;
+        prov:entity <https://data.mpsv.cz/od/soubory/ciselniky/okresy.json> ;
+        prov:hadRole ns:codeList ;
+    ] ;
+    prov:qualifiedDerivation [
+        a prov:Derivation ;
+        prov:entity <https://apl.czso.cz/iSMS/do_cis_export?kodcis=101&typdat=1&cisvaz=109_886&cisjaz=203&format=2&separator=%2C> ;
+        prov:hadRole ns:mapping ;
+    ] ;
+    prov:wasAttributedTo <https://github.com/bugulin/ndbi046> .
+
+<https://bugulin.github.io/ndbi046/resource/dataset/careproviders/> a prov:Entity ;
+    # prov:atLocation <file://health_care.ttl> ;
+    # prov:generatedAtTime "2023-01-01T00:00:00"^^xsd:dateTime ;
+    prov:wasGeneratedBy ns:healthCareActivity .
+
+<https://bugulin.github.io/ndbi046/resource/dataset/population2021/> a prov:Entity ;
+    # prov:atLocation <file://population.ttl> ;
+    # prov:generatedAtTime "2023-01-01T00:00:00"^^xsd:dateTime ;
+    prov:wasGeneratedBy ns:populationActivity .
+#endregion
+
+#region Roles
+ns:mapping a prov:Role ;
+    rdfs:label "Vazba mezi číselníky"@cs, "Mapping between code lists"@en .
+
+ns:codeList a prov:Role ;
+    rdfs:label "Číselník"@cs, "Code list"@en .
+#endregion
