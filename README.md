@@ -58,6 +58,19 @@ For information about Apache Airflow configuration and deployment, see
 [Apache Airflow documentation](https://airflow.apache.org/docs/apache-airflow/stable/index.html).
 
 
+## Provenance
+
+A provenance document can be automatically generated when using Apache Airflow
+deployment described above. Just download the
+[provenance definition file](assets/provenance.ttl) and link it as `provenance`
+parameter of the _data-cubes_ DAG (using _Trigger DAG w/ config_ in Airflow's
+web interface). After triggering the DAG, the provenance document should show up
+as `provenance.trig` file in the `output_path` directory.
+
+By default (when no `provenance` parameter passed), the provenance document
+creation task is skipped.
+
+
 ## Data sources
 
 * [Národní registr poskytovatelů zdravotních služeb](https://data.gov.cz/datová-sada?iri=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatové-sady%2F00024341%2Faa4c99d9f1480cca59807389cf88d4dc)
