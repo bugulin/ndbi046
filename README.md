@@ -71,6 +71,19 @@ By default (when no `provenance` parameter passed), the provenance document
 creation task is skipped.
 
 
+## Metadata
+
+Territorial units code list is described using a SKOS hierarchy. This separate
+concept scheme can be obtained by following command:
+
+```console
+$ datacube generate regions+counties
+```
+
+Population 2021 dataset metadata are located in
+[assets/population.metadata.ttl](assets/population.metadata.ttl).
+
+
 ## Data sources
 
 * [Národní registr poskytovatelů zdravotních služeb](https://data.gov.cz/datová-sada?iri=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatové-sady%2F00024341%2Faa4c99d9f1480cca59807389cf88d4dc)
