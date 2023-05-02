@@ -1,0 +1,591 @@
+@base <https://bugulin.github.io/ndbi046/resource/> .
+@prefix ns-code: <https://bugulin.github.io/ndbi046/code#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+ns-code:County a rdfs:Class,
+        owl:Class ;
+    rdfs:label "Okres - třída číselníku"@cs,
+        "County - codelist class"@en ;
+    rdfs:seeAlso ns-code:territorialUnit ;
+    rdfs:subClassOf skos:Concept .
+
+ns-code:Region a rdfs:Class,
+        owl:Class ;
+    rdfs:label "Kraj - třída číselníku"@cs,
+        "Region - codelist class"@en ;
+    rdfs:seeAlso ns-code:territorialUnit ;
+    rdfs:subClassOf skos:Concept .
+
+ns-code:CZ0100 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ010 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Hlavní město Praha"@cs .
+
+ns-code:CZ0201 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ020 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Benešov"@cs .
+
+ns-code:CZ0202 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ020 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Beroun"@cs .
+
+ns-code:CZ0203 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ020 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Kladno"@cs .
+
+ns-code:CZ0204 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ020 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Kolín"@cs .
+
+ns-code:CZ0205 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ020 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Kutná Hora"@cs .
+
+ns-code:CZ0206 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ020 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Mělník"@cs .
+
+ns-code:CZ0207 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ020 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Mladá Boleslav"@cs .
+
+ns-code:CZ0208 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ020 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Nymburk"@cs .
+
+ns-code:CZ0209 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ020 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Praha-východ"@cs .
+
+ns-code:CZ020A a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ020 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Praha-západ"@cs .
+
+ns-code:CZ020B a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ020 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Příbram"@cs .
+
+ns-code:CZ020C a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ020 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Rakovník"@cs .
+
+ns-code:CZ0311 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ031 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "České Budějovice"@cs .
+
+ns-code:CZ0312 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ031 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Český Krumlov"@cs .
+
+ns-code:CZ0313 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ031 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Jindřichův Hradec"@cs .
+
+ns-code:CZ0314 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ031 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Písek"@cs .
+
+ns-code:CZ0315 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ031 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Prachatice"@cs .
+
+ns-code:CZ0316 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ031 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Strakonice"@cs .
+
+ns-code:CZ0317 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ031 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Tábor"@cs .
+
+ns-code:CZ0321 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ032 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Domažlice"@cs .
+
+ns-code:CZ0322 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ032 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Klatovy"@cs .
+
+ns-code:CZ0323 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ032 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Plzeň-město"@cs .
+
+ns-code:CZ0324 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ032 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Plzeň-jih"@cs .
+
+ns-code:CZ0325 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ032 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Plzeň-sever"@cs .
+
+ns-code:CZ0326 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ032 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Rokycany"@cs .
+
+ns-code:CZ0327 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ032 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Tachov"@cs .
+
+ns-code:CZ0411 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ041 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Cheb"@cs .
+
+ns-code:CZ0412 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ041 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Karlovy Vary"@cs .
+
+ns-code:CZ0413 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ041 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Sokolov"@cs .
+
+ns-code:CZ0421 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ042 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Děčín"@cs .
+
+ns-code:CZ0422 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ042 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Chomutov"@cs .
+
+ns-code:CZ0423 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ042 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Litoměřice"@cs .
+
+ns-code:CZ0424 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ042 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Louny"@cs .
+
+ns-code:CZ0425 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ042 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Most"@cs .
+
+ns-code:CZ0426 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ042 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Teplice"@cs .
+
+ns-code:CZ0427 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ042 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Ústí nad Labem"@cs .
+
+ns-code:CZ0511 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ051 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Česká Lípa"@cs .
+
+ns-code:CZ0512 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ051 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Jablonec nad Nisou"@cs .
+
+ns-code:CZ0513 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ051 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Liberec"@cs .
+
+ns-code:CZ0514 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ051 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Semily"@cs .
+
+ns-code:CZ0521 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ052 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Hradec Králové"@cs .
+
+ns-code:CZ0522 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ052 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Jičín"@cs .
+
+ns-code:CZ0523 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ052 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Náchod"@cs .
+
+ns-code:CZ0524 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ052 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Rychnov nad Kněžnou"@cs .
+
+ns-code:CZ0525 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ052 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Trutnov"@cs .
+
+ns-code:CZ0531 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ053 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Chrudim"@cs .
+
+ns-code:CZ0532 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ053 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Pardubice"@cs .
+
+ns-code:CZ0533 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ053 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Svitavy"@cs .
+
+ns-code:CZ0534 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ053 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Ústí nad Orlicí"@cs .
+
+ns-code:CZ0631 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ063 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Havlíčkův Brod"@cs .
+
+ns-code:CZ0632 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ063 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Jihlava"@cs .
+
+ns-code:CZ0633 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ063 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Pelhřimov"@cs .
+
+ns-code:CZ0634 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ063 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Třebíč"@cs .
+
+ns-code:CZ0635 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ063 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Žďár nad Sázavou"@cs .
+
+ns-code:CZ0641 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ064 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Blansko"@cs .
+
+ns-code:CZ0642 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ064 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Brno-město"@cs .
+
+ns-code:CZ0643 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ064 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Brno-venkov"@cs .
+
+ns-code:CZ0644 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ064 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Břeclav"@cs .
+
+ns-code:CZ0645 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ064 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Hodonín"@cs .
+
+ns-code:CZ0646 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ064 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Vyškov"@cs .
+
+ns-code:CZ0647 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ064 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Znojmo"@cs .
+
+ns-code:CZ0711 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ071 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Jeseník"@cs .
+
+ns-code:CZ0712 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ071 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Olomouc"@cs .
+
+ns-code:CZ0713 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ071 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Prostějov"@cs .
+
+ns-code:CZ0714 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ071 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Přerov"@cs .
+
+ns-code:CZ0715 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ071 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Šumperk"@cs .
+
+ns-code:CZ0721 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ072 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Kroměříž"@cs .
+
+ns-code:CZ0722 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ072 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Uherské Hradiště"@cs .
+
+ns-code:CZ0723 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ072 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Vsetín"@cs .
+
+ns-code:CZ0724 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ072 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Zlín"@cs .
+
+ns-code:CZ0801 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ080 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Bruntál"@cs .
+
+ns-code:CZ0802 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ080 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Frýdek-Místek"@cs .
+
+ns-code:CZ0803 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ080 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Karviná"@cs .
+
+ns-code:CZ0804 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ080 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Nový Jičín"@cs .
+
+ns-code:CZ0805 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ080 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Opava"@cs .
+
+ns-code:CZ0806 a skos:Concept,
+        ns-code:County ;
+    skos:broader ns-code:CZ080 ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Ostrava-město"@cs .
+
+ns-code:CZ010 a skos:Concept,
+        ns-code:Region ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Hlavní město Praha"@cs ;
+    skos:topConceptOf ns-code:territorialUnit .
+
+ns-code:CZ041 a skos:Concept,
+        ns-code:Region ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Karlovarský kraj"@cs ;
+    skos:topConceptOf ns-code:territorialUnit .
+
+ns-code:CZ051 a skos:Concept,
+        ns-code:Region ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Liberecký kraj"@cs ;
+    skos:topConceptOf ns-code:territorialUnit .
+
+ns-code:CZ053 a skos:Concept,
+        ns-code:Region ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Pardubický kraj"@cs ;
+    skos:topConceptOf ns-code:territorialUnit .
+
+ns-code:CZ072 a skos:Concept,
+        ns-code:Region ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Zlínský kraj"@cs ;
+    skos:topConceptOf ns-code:territorialUnit .
+
+ns-code:CZ052 a skos:Concept,
+        ns-code:Region ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Královéhradecký kraj"@cs ;
+    skos:topConceptOf ns-code:territorialUnit .
+
+ns-code:CZ063 a skos:Concept,
+        ns-code:Region ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Kraj Vysočina"@cs ;
+    skos:topConceptOf ns-code:territorialUnit .
+
+ns-code:CZ071 a skos:Concept,
+        ns-code:Region ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Olomoucký kraj"@cs ;
+    skos:topConceptOf ns-code:territorialUnit .
+
+ns-code:CZ080 a skos:Concept,
+        ns-code:Region ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Moravskoslezský kraj"@cs ;
+    skos:topConceptOf ns-code:territorialUnit .
+
+ns-code:CZ031 a skos:Concept,
+        ns-code:Region ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Jihočeský kraj"@cs ;
+    skos:topConceptOf ns-code:territorialUnit .
+
+ns-code:CZ032 a skos:Concept,
+        ns-code:Region ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Plzeňský kraj"@cs ;
+    skos:topConceptOf ns-code:territorialUnit .
+
+ns-code:CZ042 a skos:Concept,
+        ns-code:Region ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Ústecký kraj"@cs ;
+    skos:topConceptOf ns-code:territorialUnit .
+
+ns-code:CZ064 a skos:Concept,
+        ns-code:Region ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Jihomoravský kraj"@cs ;
+    skos:topConceptOf ns-code:territorialUnit .
+
+ns-code:CZ020 a skos:Concept,
+        ns-code:Region ;
+    skos:inScheme ns-code:territorialUnit ;
+    skos:prefLabel "Středočeský kraj"@cs ;
+    skos:topConceptOf ns-code:territorialUnit .
+
+ns-code:territorialUnit a skos:ConceptScheme ;
+    rdfs:label "Schéma číselníku pro územní celky"@cs,
+        "Code list scheme for territorial units"@en ;
+    rdfs:seeAlso ns-code:County,
+        ns-code:Region ;
+    skos:hasTopConcept ns-code:CZ010,
+        ns-code:CZ020,
+        ns-code:CZ031,
+        ns-code:CZ032,
+        ns-code:CZ041,
+        ns-code:CZ042,
+        ns-code:CZ051,
+        ns-code:CZ052,
+        ns-code:CZ053,
+        ns-code:CZ063,
+        ns-code:CZ064,
+        ns-code:CZ071,
+        ns-code:CZ072,
+        ns-code:CZ080 ;
+    skos:note "Tento číselník poskytuje výčet krajů a okresů."@cs,
+        "This code list provides enumeration of regions and counties."@en ;
+    skos:prefLabel "Schéma číselníku pro územní celky"@cs,
+        "Code list scheme for territorial units"@en .
+
+
