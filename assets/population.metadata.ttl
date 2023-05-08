@@ -1,0 +1,32 @@
+@base <https://bugulin.github.io/ndbi046/resource/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<dataset/population2021/> a dcat:Dataset ;
+    dct:title "Obyvatelé okresy 2021"@cs,
+        "Population 2021"@en ;
+    dct:description "Populace okresů v roce 2021."@cs,
+        "Population of counties in 2021."@en ;
+    dcat:keyword "population"@en, "counties"@en, "districts"@en, "Czech Republic"@en,
+        "populace"@cs, "počet obyvatel"@cs, "okresy"@cs, "Česká republika"@cs ;
+    dcat:theme
+        <http://eurovoc.europa.eu/3300>,  # geographical distribution of the population
+        <http://eurovoc.europa.eu/5860> ; # Czechia
+    dct:license <https://creativecommons.org/share-your-work/public-domain/pdm/> ;
+    dct:publisher <https://bugulin.github.io/> ;
+    dct:spatial <http://publications.europa.eu/resource/authority/country/CZE> ;
+    dct:temporal [
+        a dct:PeriodOfTime ;
+        dcat:startDate "2021-01-01"^^xsd:date ;
+        dcat:endDate "2021-12-31"^^xsd:date ] ;
+    dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/NEVER> ;
+    dcat:distribution <dataset/population2021/ttl> .
+
+<dataset/population2021/ttl> a dcat:Distribution ;
+    dct:title "Distribuce datové sady Obyvatelé okresy 2021 – formát Turtle"@cs,
+        "Turtle (TTL) distribution of Population 2021"@en ;
+    dcat:accessURL <https://bugulin.github.io/ndbi046/population.ttl> ;
+    dcat:downloadURL <https://bugulin.github.io/ndbi046/population.ttl> ;
+    dcat:mediaType <https://www.iana.org/assignments/media-types/text/turtle> ;
+    dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> .
