@@ -1,6 +1,7 @@
 @base <https://bugulin.github.io/ndbi046/resource/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dct: <http://purl.org/dc/terms/> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <dataset/population2021/> a dcat:Dataset ;
@@ -29,4 +30,12 @@
     dcat:accessURL <https://bugulin.github.io/ndbi046/population.ttl> ;
     dcat:downloadURL <https://bugulin.github.io/ndbi046/population.ttl> ;
     dcat:mediaType <https://www.iana.org/assignments/media-types/text/turtle> ;
-    dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> .
+    dct:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
+    spdx:checksum [
+        a spdx:Checksum ;
+        spdx:algorithm spdx:checksumAlgorithm_sha1 ;
+        spdx:checksumValue "50c2afd3c39fea30c3df812cdc62446882378e3f"^^xsd:hexBinar ] ;
+    spdx:checksum [
+        a spdx:Checksum ;
+        spdx:algorithm spdx:checksumAlgorithm_md5 ;
+        spdx:checksumValue "28a6001d57064c74db110d97469f281b"^^xsd:hexBinar ] .

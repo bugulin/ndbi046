@@ -1,0 +1,518 @@
+@base <https://bugulin.github.io/ndbi046/resource/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix ns: <https://bugulin.github.io/ndbi046/ontology#> .
+@prefix ns-code: <https://bugulin.github.io/ndbi046/code#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdmx-concept: <http://purl.org/linked-data/sdmx/2009/concept#> .
+@prefix sdmx-dimension: <http://purl.org/linked-data/sdmx/2009/dimension#> .
+@prefix sdmx-measure: <http://purl.org/linked-data/sdmx/2009/measure#> .
+@prefix sdmx-subject: <http://purl.org/linked-data/sdmx/2009/subject#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<dataset/population2021/obs-00000> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0427 ;
+    ns:meanPopulation 116930 ;
+    ns:region ns-code:CZ042 .
+
+<dataset/population2021/obs-00001> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0524 ;
+    ns:meanPopulation 78479 ;
+    ns:region ns-code:CZ052 .
+
+<dataset/population2021/obs-00002> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0514 ;
+    ns:meanPopulation 71593 ;
+    ns:region ns-code:CZ051 .
+
+<dataset/population2021/obs-00003> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0522 ;
+    ns:meanPopulation 78763 ;
+    ns:region ns-code:CZ052 .
+
+<dataset/population2021/obs-00004> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0531 ;
+    ns:meanPopulation 103657 ;
+    ns:region ns-code:CZ053 .
+
+<dataset/population2021/obs-00005> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0642 ;
+    ns:meanPopulation 378424 ;
+    ns:region ns-code:CZ064 .
+
+<dataset/population2021/obs-00006> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0644 ;
+    ns:meanPopulation 114758 ;
+    ns:region ns-code:CZ064 .
+
+<dataset/population2021/obs-00007> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0208 ;
+    ns:meanPopulation 100584 ;
+    ns:region ns-code:CZ020 .
+
+<dataset/population2021/obs-00008> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0646 ;
+    ns:meanPopulation 91984 ;
+    ns:region ns-code:CZ064 .
+
+<dataset/population2021/obs-00009> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0713 ;
+    ns:meanPopulation 107697 ;
+    ns:region ns-code:CZ071 .
+
+<dataset/population2021/obs-00010> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0714 ;
+    ns:meanPopulation 126826 ;
+    ns:region ns-code:CZ071 .
+
+<dataset/population2021/obs-00011> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0322 ;
+    ns:meanPopulation 84661 ;
+    ns:region ns-code:CZ032 .
+
+<dataset/population2021/obs-00012> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0326 ;
+    ns:meanPopulation 48587 ;
+    ns:region ns-code:CZ032 .
+
+<dataset/population2021/obs-00013> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0411 ;
+    ns:meanPopulation 88030 ;
+    ns:region ns-code:CZ041 .
+
+<dataset/population2021/obs-00014> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0723 ;
+    ns:meanPopulation 140392 ;
+    ns:region ns-code:CZ072 .
+
+<dataset/population2021/obs-00015> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0724 ;
+    ns:meanPopulation 188947 ;
+    ns:region ns-code:CZ072 .
+
+<dataset/population2021/obs-00016> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0206 ;
+    ns:meanPopulation 108889 ;
+    ns:region ns-code:CZ020 .
+
+<dataset/population2021/obs-00017> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0209 ;
+    ns:meanPopulation 186558 ;
+    ns:region ns-code:CZ020 .
+
+<dataset/population2021/obs-00018> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ020C ;
+    ns:meanPopulation 54767 ;
+    ns:region ns-code:CZ020 .
+
+<dataset/population2021/obs-00019> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0314 ;
+    ns:meanPopulation 70582 ;
+    ns:region ns-code:CZ031 .
+
+<dataset/population2021/obs-00020> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0323 ;
+    ns:meanPopulation 187985 ;
+    ns:region ns-code:CZ032 .
+
+<dataset/population2021/obs-00021> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0421 ;
+    ns:meanPopulation 126492 ;
+    ns:region ns-code:CZ042 .
+
+<dataset/population2021/obs-00022> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0521 ;
+    ns:meanPopulation 162193 ;
+    ns:region ns-code:CZ052 .
+
+<dataset/population2021/obs-00023> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0802 ;
+    ns:meanPopulation 212422 ;
+    ns:region ns-code:CZ080 .
+
+<dataset/population2021/obs-00024> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0312 ;
+    ns:meanPopulation 60033 ;
+    ns:region ns-code:CZ031 .
+
+<dataset/population2021/obs-00025> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0325 ;
+    ns:meanPopulation 80228 ;
+    ns:region ns-code:CZ032 .
+
+<dataset/population2021/obs-00026> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0202 ;
+    ns:meanPopulation 95823 ;
+    ns:region ns-code:CZ020 .
+
+<dataset/population2021/obs-00027> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0207 ;
+    ns:meanPopulation 127221 ;
+    ns:region ns-code:CZ020 .
+
+<dataset/population2021/obs-00028> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0711 ;
+    ns:meanPopulation 36884 ;
+    ns:region ns-code:CZ071 .
+
+<dataset/population2021/obs-00029> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0205 ;
+    ns:meanPopulation 75402 ;
+    ns:region ns-code:CZ020 .
+
+<dataset/population2021/obs-00030> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0201 ;
+    ns:meanPopulation 99008 ;
+    ns:region ns-code:CZ020 .
+
+<dataset/population2021/obs-00031> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ020A ;
+    ns:meanPopulation 149990 ;
+    ns:region ns-code:CZ020 .
+
+<dataset/population2021/obs-00032> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ020B ;
+    ns:meanPopulation 114060 ;
+    ns:region ns-code:CZ020 .
+
+<dataset/population2021/obs-00033> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0311 ;
+    ns:meanPopulation 194994 ;
+    ns:region ns-code:CZ031 .
+
+<dataset/population2021/obs-00034> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0315 ;
+    ns:meanPopulation 50225 ;
+    ns:region ns-code:CZ031 .
+
+<dataset/population2021/obs-00035> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0801 ;
+    ns:meanPopulation 89906 ;
+    ns:region ns-code:CZ080 .
+
+<dataset/population2021/obs-00036> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0804 ;
+    ns:meanPopulation 149907 ;
+    ns:region ns-code:CZ080 .
+
+<dataset/population2021/obs-00037> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0806 ;
+    ns:meanPopulation 312908 ;
+    ns:region ns-code:CZ080 .
+
+<dataset/population2021/obs-00038> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0313 ;
+    ns:meanPopulation 89325 ;
+    ns:region ns-code:CZ031 .
+
+<dataset/population2021/obs-00039> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0321 ;
+    ns:meanPopulation 54313 ;
+    ns:region ns-code:CZ032 .
+
+<dataset/population2021/obs-00040> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0412 ;
+    ns:meanPopulation 110195 ;
+    ns:region ns-code:CZ041 .
+
+<dataset/population2021/obs-00041> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0324 ;
+    ns:meanPopulation 68623 ;
+    ns:region ns-code:CZ032 .
+
+<dataset/population2021/obs-00042> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0423 ;
+    ns:meanPopulation 117473 ;
+    ns:region ns-code:CZ042 .
+
+<dataset/population2021/obs-00043> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0426 ;
+    ns:meanPopulation 124401 ;
+    ns:region ns-code:CZ042 .
+
+<dataset/population2021/obs-00044> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0534 ;
+    ns:meanPopulation 135977 ;
+    ns:region ns-code:CZ053 .
+
+<dataset/population2021/obs-00045> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0511 ;
+    ns:meanPopulation 101997 ;
+    ns:region ns-code:CZ051 .
+
+<dataset/population2021/obs-00046> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0513 ;
+    ns:meanPopulation 173337 ;
+    ns:region ns-code:CZ051 .
+
+<dataset/population2021/obs-00047> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0523 ;
+    ns:meanPopulation 108092 ;
+    ns:region ns-code:CZ052 .
+
+<dataset/population2021/obs-00048> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0525 ;
+    ns:meanPopulation 115365 ;
+    ns:region ns-code:CZ052 .
+
+<dataset/population2021/obs-00049> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0647 ;
+    ns:meanPopulation 113389 ;
+    ns:region ns-code:CZ064 .
+
+<dataset/population2021/obs-00050> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0631 ;
+    ns:meanPopulation 93521 ;
+    ns:region ns-code:CZ063 .
+
+<dataset/population2021/obs-00051> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0532 ;
+    ns:meanPopulation 171461 ;
+    ns:region ns-code:CZ053 .
+
+<dataset/population2021/obs-00052> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0634 ;
+    ns:meanPopulation 109373 ;
+    ns:region ns-code:CZ063 .
+
+<dataset/population2021/obs-00053> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0715 ;
+    ns:meanPopulation 118618 ;
+    ns:region ns-code:CZ071 .
+
+<dataset/population2021/obs-00054> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0204 ;
+    ns:meanPopulation 103345 ;
+    ns:region ns-code:CZ020 .
+
+<dataset/population2021/obs-00055> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0633 ;
+    ns:meanPopulation 71457 ;
+    ns:region ns-code:CZ063 .
+
+<dataset/population2021/obs-00056> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0635 ;
+    ns:meanPopulation 117181 ;
+    ns:region ns-code:CZ063 .
+
+<dataset/population2021/obs-00057> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0641 ;
+    ns:meanPopulation 107795 ;
+    ns:region ns-code:CZ064 .
+
+<dataset/population2021/obs-00058> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0645 ;
+    ns:meanPopulation 151344 ;
+    ns:region ns-code:CZ064 .
+
+<dataset/population2021/obs-00059> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0533 ;
+    ns:meanPopulation 102799 ;
+    ns:region ns-code:CZ053 .
+
+<dataset/population2021/obs-00060> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0632 ;
+    ns:meanPopulation 112206 ;
+    ns:region ns-code:CZ063 .
+
+<dataset/population2021/obs-00061> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0643 ;
+    ns:meanPopulation 224794 ;
+    ns:region ns-code:CZ064 .
+
+<dataset/population2021/obs-00062> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0722 ;
+    ns:meanPopulation 139922 ;
+    ns:region ns-code:CZ072 .
+
+<dataset/population2021/obs-00063> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0803 ;
+    ns:meanPopulation 241184 ;
+    ns:region ns-code:CZ080 .
+
+<dataset/population2021/obs-00064> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0316 ;
+    ns:meanPopulation 69794 ;
+    ns:region ns-code:CZ031 .
+
+<dataset/population2021/obs-00065> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0712 ;
+    ns:meanPopulation 233661 ;
+    ns:region ns-code:CZ071 .
+
+<dataset/population2021/obs-00066> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0721 ;
+    ns:meanPopulation 103753 ;
+    ns:region ns-code:CZ072 .
+
+<dataset/population2021/obs-00067> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0805 ;
+    ns:meanPopulation 173853 ;
+    ns:region ns-code:CZ080 .
+
+<dataset/population2021/obs-00068> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0203 ;
+    ns:meanPopulation 164359 ;
+    ns:region ns-code:CZ020 .
+
+<dataset/population2021/obs-00069> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0413 ;
+    ns:meanPopulation 85452 ;
+    ns:region ns-code:CZ041 .
+
+<dataset/population2021/obs-00070> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0422 ;
+    ns:meanPopulation 121643 ;
+    ns:region ns-code:CZ042 .
+
+<dataset/population2021/obs-00071> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0425 ;
+    ns:meanPopulation 107090 ;
+    ns:region ns-code:CZ042 .
+
+<dataset/population2021/obs-00072> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0317 ;
+    ns:meanPopulation 101333 ;
+    ns:region ns-code:CZ031 .
+
+<dataset/population2021/obs-00073> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0512 ;
+    ns:meanPopulation 90204 ;
+    ns:region ns-code:CZ051 .
+
+<dataset/population2021/obs-00074> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0327 ;
+    ns:meanPopulation 52793 ;
+    ns:region ns-code:CZ032 .
+
+<dataset/population2021/obs-00075> a qb:Observation ;
+    qb:dataSet <dataset/population2021/> ;
+    ns:county ns-code:CZ0424 ;
+    ns:meanPopulation 85466 ;
+    ns:region ns-code:CZ042 .
+
+ns:MeanPopulationStructure a qb:DataStructureDefinition ;
+    qb:component [ qb:dimension ns:county ],
+        [ qb:dimension ns:region ],
+        [ qb:measure ns:meanPopulation ] .
+
+ns:county a qb:CodedProperty,
+        qb:DimensionProperty,
+        rdf:Property ;
+    rdfs:label "okres"@cs,
+        "county"@en ;
+    qb:codeList ns-code:territorialUnit ;
+    qb:concept sdmx-concept:refArea ;
+    rdfs:range ns-code:County ;
+    rdfs:subPropertyOf sdmx-dimension:refArea .
+
+ns:meanPopulation a qb:MeasureProperty,
+        rdf:Property ;
+    rdfs:label "střední stav obyvatel"@cs,
+        "mean population"@en ;
+    rdfs:range xsd:nonNegativeInteger ;
+    rdfs:subPropertyOf sdmx-measure:obsValue .
+
+ns:region a qb:CodedProperty,
+        qb:DimensionProperty,
+        rdf:Property ;
+    rdfs:label "kraj"@cs,
+        "region"@en ;
+    qb:codeList ns-code:territorialUnit ;
+    qb:concept sdmx-concept:refArea ;
+    rdfs:range ns-code:Region ;
+    rdfs:subPropertyOf sdmx-dimension:refArea .
+
+<dataset/population2021/> a qb:DataSet ;
+    rdfs:label "Obyvatelé okresy 2021"@cs,
+        "Population 2021"@en ;
+    dct:description "Populace okresů v roce 2021."@cs,
+        "Population of counties in 2021."@en ;
+    dct:issued "2023-05-01"^^xsd:date ;
+    dct:license <https://creativecommons.org/share-your-work/public-domain/pdm/> ;
+    dct:publisher <https://bugulin.github.io/> ;
+    dct:subject sdmx-subject:1.1,
+        sdmx-subject:3.2 ;
+    dct:title "Obyvatelé okresy 2021"@cs,
+        "Population 2021"@en ;
+    qb:structure ns:MeanPopulationStructure ;
+    rdfs:comment "Populace okresů v roce 2021."@cs,
+        "Population of counties in 2021."@en .
+
+
