@@ -81,7 +81,7 @@ $ datacube generate regions+counties
 ```
 
 Population 2021 dataset metadata are located in
-[assets/population.metadata.ttl](assets/population.metadata.ttl).
+[public/data-catalog.ttl](public/data-catalog.ttl).
 
 
 ## Data sources
